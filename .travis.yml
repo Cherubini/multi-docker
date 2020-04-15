@@ -21,3 +21,15 @@ after_success:
     - docker push cherubini/multi-server
     - docker push cherubini/multi-worker
     
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "multi-docker"
+    env: "MultiDocker-env"
+    bucket_name: "elasticbeanstalk-us-east-1-737292368773"
+    bucket_path: "multi-docker"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
